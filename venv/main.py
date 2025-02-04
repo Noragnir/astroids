@@ -34,6 +34,11 @@ def main():
             else:
                 item.update(dt)
         for asteroid in asteroids:
+            for shot in shots_group:
+                if shot.collision(asteroid):
+                    shot.kill()
+                    asteroid.kill()
+        for asteroid in asteroids:
             if player.collision(asteroid):
                 print ("Game Over!")
                 sys.exit()
